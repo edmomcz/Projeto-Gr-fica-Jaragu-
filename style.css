@@ -1,0 +1,149 @@
+/* ==========================================================================
+   1. IMPORTAÇÃO DE FONTES (Google Fonts)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* ==========================================================================
+   2. VARIÁVEIS DE CONFIGURAÇÃO (Cores e Fontes)
+   ========================================================================== */
+:root {
+    /* Paleta de Cores */
+    --cor-primaria: #0f172a;    /* Azul escuro / Grafite para cabeçalhos e seções escuras */
+    --cor-secundaria: #2563eb;  /* Azul royal para destaques principais */
+    --cor-destaque: #06b6d4;    /* Ciano vibrante para botões e links de ação */
+    --cor-fundo: #f8fafc;       /* Cinza bem claro para o fundo da página */
+    --cor-card: #ffffff;        /* Branco puro para blocos de conteúdo e cartões */
+    --cor-texto: #334155;       /* Cinza escuro para leitura confortável */
+    --cor-texto-claro: #ffffff; /* Texto branco para fundos escuros */
+
+    /* Tipografia */
+    --fonte-principal: 'Inter', sans-serif;
+}
+
+/* ==========================================================================
+   3. RESET CSS (Garante consistência entre navegadores)
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Deixa o deslize da página suave ao clicar no menu */
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6; /* Melhora o espaçamento entre as linhas de texto */
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   4. ESTILOS BASE DE TIPOGRAFIA
+   ========================================================================== */
+h1, h2, h3, h4 {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;    /* Tamanho para desktops */
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;   /* Títulos de seções geralmente ficam centralizados */
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--cor-secundaria);
+    text-decoration: none; /* Remove aquele sublinhado padrão de links */
+    transition: color 0.3s ease; /* Efeito suave quando o mouse passa por cima */
+}
+
+a:hover {
+    color: var(--cor-destaque);
+}
+
+ul {
+    list-style: none; /* Remove as "bolinhas" das listas (útil para o menu) */
+}
+
+/* ==========================================================================
+   5. CABEÇALHO (HEADER) & NAVEGAÇÃO
+   ========================================================================== */
+
+header {
+    background-color: var(--cor-card); /* Fundo branco para contrastar com o site */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra leve abaixo do menu */
+    
+    /* Ativando o Flexbox para alinhar a Logo e o Bloco <nav> */
+    display: flex;
+    justify-content: space-between; /* Empurra a logo para a esquerda e o menu para a direita */
+    align-items: center; /* Centraliza verticalmente a logo e o menu */
+    
+    /* Espaçamento interno (padding): 20px em cima/baixo e 5% nas laterais */
+    padding: 20px 5%; 
+    
+    /* Mantém o menu fixo no topo da tela ao rolar a página */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que o menu fique sempre por cima de outros elementos */
+}
+
+/* Estilização da Logo da Gráfica Jaraguá */
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    letter-spacing: -0.5px; /* Deixa as letras ligeiramente mais juntas, estilo marca */
+}
+
+/* Ativando o Flexbox na lista (<ul>) para colocar os links lado a lado */
+header nav ul {
+    display: flex;
+    gap: 30px; /* Cria um espaçamento uniforme de 30px entre cada item do menu */
+}
+
+/* Estilização dos Links do Menu */
+header nav ul li a {
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 0;
+    position: relative; /* Base para o efeito da linha que vamos criar abaixo */
+}
+
+/* Efeito Hover moderno: Uma linha que surge embaixo do link ao passar o mouse */
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--cor-secundaria);
+    transition: width 0.3s ease; /* Transição suave da linha expandindo */
+}
+
+header nav ul li a:hover {
+    color: var(--cor-secundaria);
+}
+
+header nav ul li a:hover::after {
+    width: 100%; /* A linha expande para o tamanho total do link ao passar o mouse */
+}
