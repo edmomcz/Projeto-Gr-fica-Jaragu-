@@ -147,3 +147,183 @@ header nav ul li a:hover {
 header nav ul li a:hover::after {
     width: 100%; /* A linha expande para o tamanho total do link ao passar o mouse */
 }
+
+/* Ajuste do container da Logo */
+header .logo a {
+    display: flex;
+    align-items: center;
+}
+
+/* Controle do tamanho real da imagem da Logo */
+header .logo img {
+    width: 200px;      /* Define a largura visual fixa que você deseja na tela */
+    height: auto;      /* Faz a altura se ajustar proporcionalmente, sem distorcer */
+    display: block;
+}
+
+/* Ajuste opcional para celulares (se quiser a logo um pouco menor em telas pequenas) */
+@media (max-width: 768px) {
+    header .logo img {
+        width: 160px;  /* Diminui um pouco para caber melhor no topo do celular */
+    }
+}
+
+/* ==========================================================================
+   6. SEÇÃO HERO (BANNER PRINCIPAL)
+   ========================================================================== */
+
+.hero {
+    /* Se você optou por usar a imagem de fundo: */
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.5)), 
+                url('imagens/img-capa-teste.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    min-height: 70vh; 
+    padding: 60px 10%; /* Aumentamos o espaçamento nas laterais para o texto respirar */
+    
+    /* MUDANÇA AQUI: Flexbox agora alinha o conteúdo à esquerda */
+    display: flex;
+    justify-content: flex-start; /* Empurra o bloco de conteúdo para o início (esquerda) */
+    align-items: center;         /* Mantém o bloco centralizado verticalmente na tela */
+    text-align: left;            /* Alinha os textos internamente para a esquerda */
+}
+
+.hero-conteudo {
+    max-width: 650px; /* Reduzimos um pouco a largura máxima para o texto empilhar bonito */
+}
+
+.hero h1 {
+    color: var(--cor-texto-claro);
+    font-size: 3.2rem; /* Aumentamos um pouquinho o tamanho para dar mais imponência */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    color: #cbd5e1; /* Um tom cinza claro para excelente leitura sobre o fundo escuro */
+    font-size: 1.25rem;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+/* Estilização do Botão de Chamada para Ação (CTA) */
+.btn-orcamento {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Efeito de passar o mouse no botão */
+.btn-orcamento:hover {
+    background-color: var(--cor-destaque); /* Muda para o ciano vibrante */
+    color: var(--cor-primaria); /* Escurece o texto para manter o contraste */
+    transform: translateY(-3px); /* O botão dá um leve pulinho para cima */
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4); /* Sombra acompanha a nova cor */
+}
+
+/* Ajustes do Banner para Celulares */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 50vh; /* Reduz um pouco a altura do banner no celular */
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Diminui o título para 32px para caber em qualquer tela */
+    }
+
+    .hero p {
+        font-size: 1.05rem; /* Diminui ligeiramente o subtítulo */
+        margin-bottom: 30px;
+    }
+
+    .btn-orcamento {
+        padding: 12px 28px; /* Diminui um pouco o tamanho do botão */
+        font-size: 1rem;
+        width: 100%; /* No celular, o botão ocupa a largura disponível, facilitando o clique */
+        max-width: 300px; /* Mas não deixa passar de 300px para não ficar bizarro */
+    }
+}
+
+/* ==========================================================================
+7. SEÇÃO DE SERVIÇOS (CSS GRID)
+========================================================================== */
+
+.secao-servicos {
+    padding: 80px 5%;
+    background-color: var(--cor-fundo); /* Usa o cinza bem claro que definimos */
+}
+
+/* Container para limitar a largura máxima da seção no computador */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o bloco na tela */
+}
+
+.servicos-topo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.servicos-topo p {
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* O CORAÇÃO DO GRID */
+.grid-servicos {
+    display: grid;
+    /* Criar colunas automáticas: cada cartão terá no mínimo 250px. 
+       Se houver espaço, eles dividem a tela igualmente (1fr). Se não houver, eles quebram de linha! */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Espaçamento uniforme entre os cartões (tanto horizontal quanto vertical) */
+}
+
+/* Estilização de cada Cartão de Serviço */
+.card-servico {
+    background-color: var(--cor-card); /* Fundo branco puro */
+    padding: 35px 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); /* Sombra quase invisível */
+    border: 1px solid #e2e8f0; /* Borda cinza bem fina */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse no cartão (interatividade) */
+.card-servico:hover {
+    transform: translateY(-5px); /* O cartão sobe de leve */
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08); /* A sombra aumenta, dando efeito de flutuação */
+    border-color: var(--cor-secundaria); /* A borda ganha a cor azul da empresa */
+}
+
+/* Estilo do Ícone (Emoji) */
+.servico-icone {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.card-servico h3 {
+    font-size: 1.25rem;
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+.card-servico p {
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    margin-bottom: 0; /* Remove a margem padrão do parágrafo neste bloco */
+    line-height: 1.5;
+}
